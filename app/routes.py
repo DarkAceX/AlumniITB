@@ -20,7 +20,6 @@ users = {
     }
 }
 
-
 # Página principal
 @app.route('/')
 def index():
