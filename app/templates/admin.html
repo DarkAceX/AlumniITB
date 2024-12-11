@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Comunidad de Egresados ITB</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin - Egresados ITB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    {% for username, fullname, file_path, estado in pending_users %}
+    <tr>
+        <td>{{ fullname }}</td>
+        <td>{{ username }}</td>
+        <td><a href="{{ url_for('approve_user', username=username) }}" class="btn btn-success btn-sm">Habilitar</a></td>
+        <td><a href="{{ url_for('reject_user', username=username) }}" class="btn btn-danger btn-sm">Rechazar</a></td>
+    </tr>
+    {% endfor %}
+
+    <!-- Panel de Administración -->
+    <div class="container">
+        <h2>Gestión de Usuarios</h2>
+        <p>Verifica y habilita a los egresados para que puedan acceder a la comunidad.</p>
+
+        <!-- Tabla de Usuarios -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Cédula</th>
+                    <th>Correo Electrónico</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Juan Pérez</td>
+                    <td>1712345678</td>
+                    <td>juanperez@email.com</td>
+                    <td>Esperando verificación</td>
+                    <td>
+                        <button class="btn btn-success btn-sm">Habilitar</button>
+                        <button class="btn btn-danger btn-sm">Rechazar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ana González</td>
+                    <td>1712345679</td>
+                    <td>anagonzalez@email.com</td>
+                    <td>Esperando verificación</td>
+                    <td>
+                        <button class="btn btn-success btn-sm">Habilitar</button>
+                        <button class="btn btn-danger btn-sm">Rechazar</button>
+                    </td>
+                </tr>
+                <!-- Aquí puedes agregar más usuarios -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

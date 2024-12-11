@@ -19,6 +19,11 @@ window.onload = function() {
         errorModal.show();
     }
 };
+const registerError = "{{ register_error|default('') }}";
+if (registerError) {
+    const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+    registerModal.show();
+};
 
 
 
