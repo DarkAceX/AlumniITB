@@ -46,8 +46,6 @@ def login():
         flash('Credenciales incorrectas', 'danger')
         return redirect(url_for('index'))  # Si las credenciales son incorrectas
 
-
-
 # Ruta para registrarse
 @app.route('/register', methods=['POST'])
 def register():
